@@ -95,7 +95,7 @@ const Home: React.FC = () => {
           </a>
           <motion.button
             onClick={handleQuickShopping}
-            className="py-2 px-4 rounded bg-blue-800 text-white font-semibold hover:bg-blue-900 transition shadow-lg"
+            className="py-2 px-4 rounded bg-blue-800 text-white font-semibold hover:bg-blue-900 transition shadow-lg ml-4 md:ml-8"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
