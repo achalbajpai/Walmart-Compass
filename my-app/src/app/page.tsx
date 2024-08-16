@@ -1,19 +1,18 @@
-"use client"; // Mark this file as a Client Component
+"use client";
 
 import { useState, useRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 const Home: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
   const [productName, setProductName] = useState<string>("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [darkMode, setDarkMode] = useState(false);
   const imageInputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
-  // Define predefined product options (types of noodles)
   const allProductOptions = [
     "Maggi",
     "Yippee",
@@ -27,16 +26,18 @@ const Home: React.FC = () => {
     "Myojo",
   ];
 
-  // Toggle dark mode
-  const toggleDarkMode = () => setDarkMode(!darkMode);
-
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedImage(file);
-      setProductName(""); // Clear product name if an image is selected
-      setSuggestions([]); // Clear suggestions when image is selected
+    const files = event.target.files;
+    if (files) {
+      setSelectedImages([...selectedImages, ...Array.from(files)]);
+      setProductName("");
+      setSuggestions([]);
     }
+  };
+
+  const handleRemoveImage = (index: number) => {
+    const updatedImages = selectedImages.filter((_, i) => i !== index);
+    setSelectedImages(updatedImages);
   };
 
   const handleProductNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,90 +57,118 @@ const Home: React.FC = () => {
   const handleSuggestionClick = (suggestion: string) => {
     setProductName(suggestion);
     setSuggestions([]);
-    setSelectedImage(null); // Clear selected image if a product suggestion is chosen
+    setSelectedImages([]);
   };
 
   const handleScan = async () => {
-    if (selectedImage) {
-      // Simulate processing and redirecting based on image upload
+    if (selectedImages.length > 0) {
       const productCategory = "noodles";
       router.push(`/search?category=${productCategory}`);
     } else if (productName) {
-      // Redirect based on selected product name
       router.push(`/search?product=${encodeURIComponent(productName)}`);
     }
   };
 
+  const handleQuickShopping = () => {
+    router.push('/quick-shopping');
+  };
+
   return (
-    <div className={`${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} font-sans min-h-screen`}>
+    <div className="bg-gradient-to-b from-blue-100 to-white text-blue-900 font-sans min-h-screen relative">
       <Head>
-        <title>Walmart - Find Your Product</title>
-        <meta name="description" content="Scan an image or enter a product name to find products on Walmart" />
+        <title>W-Mart - Find Your Product</title>
+        <meta name="description" content="Scan an image or enter a product name to find products on w-Mart" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={`p-6 shadow-lg ${darkMode ? "bg-gray-800" : "bg-blue-600"}`}>
+      <header className="p-3 bg-blue-700 bg-opacity-90 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
-          <a href="https://www.walmart.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-4">
-            <Image
-              src="/walmart.png" // Make sure you have an image named 'walmart.png' in the 'public' folder
-              alt="Walmart Logo"
-              width={50}
-              height={50}
-              className="rounded cursor-pointer"
-            />
-            <h1 className="text-3xl font-bold">Walmart Compass </h1>
+          <a href="https://www.walmart.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+            <motion.h1 
+              className="text-2xl font-bold text-yellow-300"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              w-Mart Compass
+            </motion.h1>
           </a>
-          <button
-            onClick={toggleDarkMode}
-            className={`py-2 px-4 rounded ${darkMode ? "bg-yellow-500 text-gray-900" : "bg-gray-200 text-blue-600"} border border-transparent hover:border-gray-400 transition`}
+          <motion.button
+            onClick={handleQuickShopping}
+            className="py-2 px-4 rounded bg-blue-800 text-white font-semibold hover:bg-blue-900 transition shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
+            Quick Shopping
+          </motion.button>
         </div>
       </header>
 
-      <main className="flex flex-col items-center py-20">
-        <h2 className="text-4xl font-bold mb-6">Scan an Image or Enter a Product Name</h2>
-        <p className="text-xl mb-10 text-center max-w-2xl">
-          Upload an image or enter a product name, and we will help you find the product you are looking for on Walmart.
-        </p>
+      <main className="flex flex-col items-center py-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-6"
+        >
+          <h2 className="text-2xl font-bold mb-2">Scan an Image or Enter a Product Name</h2>
+          <p className="text-lg mb-4 max-w-md">
+            Our AI Model will help you find the product you are looking for.
+          </p>
+        </motion.div>
 
-        {/* Instructional Image */}
-        <div className="mb-10">
+        <motion.div 
+          className="mb-4 rounded-lg overflow-hidden shadow-xl"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <Image
-            src="/instructions.jpeg" // Make sure you have an image named 'instructions.jpeg' in the 'public' folder
+            src="/instructions.jpeg"
             alt="Instructions on how to scan an image"
-            width={600}
-            height={100} // Reduced height
-            className="rounded-lg shadow-md"
+            width={450}
+            height={70}
+            className="rounded-lg"
           />
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col items-center">
+        <motion.div 
+          className="flex flex-col items-center w-full max-w-md"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <label 
+            htmlFor="file-upload"
+            className="mb-3 cursor-pointer w-full text-center p-3 rounded-full bg-white text-blue-900 shadow-md hover:bg-blue-100 transition"
+          >
+            Choose Images
+          </label>
           <input
+            id="file-upload"
             type="file"
             accept="image/*"
+            multiple
             ref={imageInputRef}
             onChange={handleImageUpload}
-            className={`mb-6 ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-900"} p-2 rounded`}
+            className="hidden"
           />
 
-          <div className="relative w-full mb-6">
+          <div className="relative w-full mb-3">
             <input
               type="text"
               placeholder="Enter product name"
               value={productName}
               onChange={handleProductNameChange}
-              className={`w-full p-2 rounded ${darkMode ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-900"}`}
+              className="w-full p-3 rounded-full bg-white text-blue-900 shadow-md focus:ring-2 focus:ring-blue-300 outline-none transition"
             />
             {suggestions.length > 0 && (
-              <ul className={`absolute z-10 w-full ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"} shadow-lg border rounded mt-1`}>
+              <ul className="absolute z-10 w-full bg-white text-black shadow-lg border rounded-lg mt-1 max-h-60 overflow-y-auto">
                 {suggestions.map((suggestion) => (
                   <li
                     key={suggestion}
                     onClick={() => handleSuggestionClick(suggestion)}
-                    className="p-2 cursor-pointer hover:bg-gray-200"
+                    className="p-2 cursor-pointer hover:bg-blue-100 transition"
                   >
                     {suggestion}
                   </li>
@@ -148,41 +177,47 @@ const Home: React.FC = () => {
             )}
           </div>
 
-          {selectedImage && (
-            <div className="mb-6">
-              <Image
-                src={URL.createObjectURL(selectedImage)}
-                alt="Selected Product"
-                width={300}
-                height={300}
-                className="rounded-lg shadow-md"
-              />
-            </div>
+          {selectedImages.length > 0 && (
+            <motion.div 
+              className="mb-3 grid grid-cols-2 gap-2"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {selectedImages.map((image, index) => (
+                <div key={index} className="relative">
+                  <Image
+                    src={URL.createObjectURL(image)}
+                    alt={`Selected Product ${index + 1}`}
+                    width={100}
+                    height={100}
+                    className="rounded-lg shadow-md"
+                  />
+                  <button
+                    onClick={() => handleRemoveImage(index)}
+                    className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1 text-xs"
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))}
+            </motion.div>
           )}
 
-          <button
+          <motion.button
             onClick={handleScan}
-            className={`py-3 px-6 rounded-full text-lg font-semibold ${darkMode ? "bg-yellow-500 text-gray-900" : "bg-blue-600 text-white"} hover:opacity-90 transition`}
-            disabled={!selectedImage && !productName}
+            className="py-3 px-6 rounded-full text-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-lg"
+            disabled={selectedImages.length === 0 && !productName}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Find Product
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </main>
 
-      <footer className={`py-6 text-center ${darkMode ? "bg-gray-800" : "bg-gray-200"}`}>
-        <div className="container mx-auto flex flex-col items-center">
-          <p className="mb-4">Follow Walmart on social media:</p>
-          <div className="flex space-x-4">
-            <a href="https://www.facebook.com/walmart" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition">
-              <Image src="/facebook.png" alt="Facebook" width={24} height={24} />
-            </a>
-            <a href="https://twitter.com/walmart" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 transition">
-              <Image src="/x.jpg" alt="Twitter" width={24} height={24} />
-            </a>
-            
-          </div>
-        </div>
+      <footer className="py-4 text-center bg-blue-200 bg-opacity-50 backdrop-blur-sm">
+        {/* Footer details removed */}
       </footer>
     </div>
   );
