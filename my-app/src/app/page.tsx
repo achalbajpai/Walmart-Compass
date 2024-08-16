@@ -171,8 +171,17 @@ const Home: React.FC = () => {
       </main>
 
       <footer className={`py-6 text-center ${darkMode ? "bg-gray-800" : "bg-gray-200"}`}>
-        <div className="container mx-auto">
-          <p>© 2024 Walmart. All rights reserved.</p>
+        <div className="container mx-auto flex flex-col items-center">
+          <p className="mb-4">Follow Walmart on social media:</p>
+          <div className="flex space-x-4">
+            <a href="https://www.facebook.com/walmart" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition">
+              <Image src="/facebook.png" alt="Facebook" width={24} height={24} />
+            </a>
+            <a href="https://twitter.com/walmart" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 transition">
+              <Image src="/x.jpg" alt="Twitter" width={24} height={24} />
+            </a>
+            
+          </div>
         </div>
       </footer>
     </div>
