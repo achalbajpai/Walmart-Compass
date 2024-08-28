@@ -217,32 +217,43 @@ const Home: React.FC = () => {
       </main>
 
       <footer className="py-4 text-center bg-blue-200 bg-opacity-50 backdrop-blur-sm">
-        <div className="flex justify-center space-x-4">
-          <motion.button
-            onClick={() => router.push('/hospital-compass')}
-            className="py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Hospital Compass
-          </motion.button>
+        <div className="flex flex-col items-center space-y-4">
+          <div className="flex space-x-4 mb-4">
+            <motion.button
+              onClick={() => router.push('/hospital-compass')}
+              className="py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Hospital Compass
+            </motion.button>
+
+            <motion.button
+              onClick={() => router.push('/airport-compass')}
+              className="py-2 px-4 rounded bg-purple-600 text-white font-semibold hover:bg-purple-700 transition shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Airport Compass
+            </motion.button>
+
+            <motion.button
+              onClick={() => router.push('/compass-3')}
+              className="py-2 px-4 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Compass 3
+            </motion.button>
+          </div>
 
           <motion.button
-            onClick={() => router.push('/airport-compass')}
-            className="py-2 px-4 rounded bg-purple-600 text-white font-semibold hover:bg-purple-700 transition shadow-lg"
+            onClick={() => router.push('/')}
+            className="py-2 px-6 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Airport Compass
-          </motion.button>
-
-          <motion.button
-            onClick={() => router.push('/compass-3')}
-            className="py-2 px-4 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Compass 3
+            Go to Home Page
           </motion.button>
         </div>
       </footer>

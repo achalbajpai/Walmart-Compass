@@ -9,21 +9,21 @@ import { motion } from "framer-motion";
 const AirportHome: React.FC = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [flightNumber, setFlightNumber] = useState<string>("");
-  const [gateSuggestions, setGateSuggestions] = useState<string[]>([]);
+  const [flightSuggestions, setFlightSuggestions] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
-  const allGateOptions = [
-    "Gate A1",
-    "Gate A2",
-    "Gate B1",
-    "Gate B2",
-    "Gate C1",
-    "Gate C2",
-    "Gate D1",
-    "Gate D2",
-    "Gate E1",
-    "Gate E2",
+  const allFlightOptions = [
+    "Flight 101",
+    "Flight 102",
+    "Flight 103",
+    "Flight 104",
+    "Flight 105",
+    "Flight 106",
+    "Flight 107",
+    "Flight 108",
+    "Flight 109",
+    "Flight 110",
   ];
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,7 @@ const AirportHome: React.FC = () => {
     if (files) {
       setSelectedFiles([...selectedFiles, ...Array.from(files)]);
       setFlightNumber("");
-      setGateSuggestions([]);
+      setFlightSuggestions([]);
     }
   };
 
@@ -45,26 +45,26 @@ const AirportHome: React.FC = () => {
     setFlightNumber(inputValue);
 
     if (inputValue) {
-      const filteredSuggestions = allGateOptions.filter(option =>
+      const filteredSuggestions = allFlightOptions.filter(option =>
         option.toLowerCase().includes(inputValue.toLowerCase())
       );
-      setGateSuggestions(filteredSuggestions);
+      setFlightSuggestions(filteredSuggestions);
     } else {
-      setGateSuggestions([]);
+      setFlightSuggestions([]);
     }
   };
 
   const handleSuggestionClick = (suggestion: string) => {
     setFlightNumber(suggestion);
-    setGateSuggestions([]);
+    setFlightSuggestions([]);
     setSelectedFiles([]);
   };
 
   const handleFindGate = async () => {
     if (selectedFiles.length > 0) {
-      router.push(`/search?gate=documents`);
+      router.push(`/search?documents`);
     } else if (flightNumber) {
-      router.push(`/search?gate=${encodeURIComponent(flightNumber)}`);
+      router.push(`/search?flight=${encodeURIComponent(flightNumber)}`);
     }
   };
 
@@ -78,6 +78,10 @@ const AirportHome: React.FC = () => {
 
   const handleNavigateToHospitalCompass = () => {
     router.push('/hospital-compass');
+  };
+
+  const handleNavigateToWMart = () => {
+    router.push('/w-mart');
   };
 
   return (
@@ -167,9 +171,9 @@ const AirportHome: React.FC = () => {
               onChange={handleFlightNumberChange}
               className="w-full p-3 rounded-full bg-white text-gray-900 shadow-md focus:ring-2 focus:ring-gray-300 outline-none transition"
             />
-            {gateSuggestions.length > 0 && (
+            {flightSuggestions.length > 0 && (
               <ul className="absolute z-10 w-full bg-white text-black shadow-lg border rounded-lg mt-1 max-h-60 overflow-y-auto">
-                {gateSuggestions.map((suggestion) => (
+                {flightSuggestions.map((suggestion) => (
                   <li
                     key={suggestion}
                     onClick={() => handleSuggestionClick(suggestion)}
@@ -224,7 +228,7 @@ const AirportHome: React.FC = () => {
       <footer className="py-4 text-center bg-indigo-100 bg-opacity-90 backdrop-blur-sm">
         <div className="container mx-auto flex justify-center gap-4">
           <motion.button
-            onClick={handleNavigateHome}
+            onClick={handleNavigateToWMart}
             className="py-2 px-4 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -238,6 +242,16 @@ const AirportHome: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             Hospital Compass
+          </motion.button>
+        </div>
+        <div className="container mx-auto mt-4 flex justify-center">
+          <motion.button
+            onClick={handleNavigateHome}
+            className="py-2 px-6 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Go to Home Page
           </motion.button>
         </div>
       </footer>

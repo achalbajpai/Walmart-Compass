@@ -80,6 +80,10 @@ const HospitalHome: React.FC = () => {
     router.push('/airport-compass');
   };
 
+  const handleNavigateToWMart = () => {
+    router.push('/w-mart');
+  };
+
   return (
     <div className="bg-gradient-to-b from-green-100 to-white text-green-900 font-sans min-h-screen relative">
       <Head>
@@ -224,20 +228,31 @@ const HospitalHome: React.FC = () => {
       <footer className="py-4 text-center bg-green-200 bg-opacity-50 backdrop-blur-sm">
         <div className="container mx-auto flex justify-center gap-4">
           <motion.button
-            onClick={() => router.push('/')}
+            onClick={handleNavigateToWMart}
             className="py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            W-Mart Compass 
+            W-Mart Compass
           </motion.button>
+
           <motion.button
-            onClick={() => router.push('/airport-compass')}
+            onClick={handleNavigateToAirportCompass}
             className="py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Airport Compass
+          </motion.button>
+        </div>
+        <div className="container mx-auto mt-4 flex justify-center">
+          <motion.button
+            onClick={handleNavigateHome}
+            className="py-2 px-6 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Go to Home Page
           </motion.button>
         </div>
       </footer>
