@@ -73,10 +73,6 @@ const Home: React.FC = () => {
     router.push('/quick-shopping');
   };
 
-  const handleHospitalCompass = () => {
-    router.push('/hospital-compass');
-  };
-
   return (
     <div className="bg-gradient-to-b from-blue-100 to-white text-blue-900 font-sans min-h-screen relative">
       <Head>
@@ -223,7 +219,7 @@ const Home: React.FC = () => {
       <footer className="py-4 text-center bg-blue-200 bg-opacity-50 backdrop-blur-sm">
         <div className="flex justify-center space-x-4">
           <motion.button
-            onClick={handleHospitalCompass}
+            onClick={() => router.push('/hospital-compass')}
             className="py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -232,12 +228,12 @@ const Home: React.FC = () => {
           </motion.button>
 
           <motion.button
-            onClick={() => router.push('/compass-2')}
+            onClick={() => router.push('/airport-compass')}
             className="py-2 px-4 rounded bg-purple-600 text-white font-semibold hover:bg-purple-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Compass 2
+            Airport Compass
           </motion.button>
 
           <motion.button
