@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="hover:underline">W-Mart Compass</span>
+            <span className="hover:underline">W-Mart Compass AI</span>
           </motion.button>
 
           <motion.button
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="hover:underline">Hospital Compass</span>
+            <span className="hover:underline">Hospital Compass AI</span>
           </motion.button>
 
           <motion.button
@@ -59,7 +59,7 @@ const HomePage: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="hover:underline">Stadium Compass</span>
+            <span className="hover:underline">Stadium Compass AI</span>
           </motion.button>
         </div>
       </main>
