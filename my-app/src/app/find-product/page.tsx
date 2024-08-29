@@ -53,7 +53,7 @@ const FindProduct: React.FC = () => {
 
       <main className="container mx-auto mt-8 p-4 flex-grow">
         <div className="flex flex-col md:flex-row items-start">
-          <div className="md:w-1/4 p-4 border rounded bg-gray-100 mb-4 md:mb-0">
+          <div className="md:w-1/4 p-4 border rounded bg-gray-100 mb-4 md:mb-0 md:mr-4"> {/* Added md:mr-4 */}
             <h3 className="font-bold mb-2 text-red-600">Nearby Items</h3> 
             <ul className="list-disc list-inside text-gray-700">
               <li>Google Nest Mini</li>
