@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
           transition={{ duration: 0.5 }}
           style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" }}
         >
-          COMPASS
+          COMPASS.AI
         </motion.h1>
         <motion.p
           className="text-2xl md:text-4xl mt-4 text-gray-700"
