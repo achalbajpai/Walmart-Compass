@@ -234,15 +234,6 @@ const Home: React.FC = () => {
             >
               Stadium Compass
             </motion.button>
-
-            <motion.button
-              onClick={() => router.push('/compass-3')}
-              className="py-2 px-4 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Compass 3
-            </motion.button>
           </div>
 
           <motion.button

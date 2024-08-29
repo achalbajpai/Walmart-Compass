@@ -33,13 +33,13 @@ const FindProduct: React.FC = () => {
   return (
     <div className="bg-white min-h-screen flex flex-col">
       <header className="bg-blue-600 p-4 text-white">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold">W-Mart</h1>
-          <div className="flex items-center space-x-4">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+          <h1 className="text-2xl font-bold mb-2 md:mb-0">W-Mart</h1>
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
             <input 
               type="text" 
               placeholder="Search for products..." 
-              className="border rounded p-2"
+              className="border rounded p-2 w-full md:w-auto"
             />
             <button onClick={handleBackToSearch} className="bg-white text-blue-600 px-4 py-2 rounded">
               Back
@@ -53,8 +53,8 @@ const FindProduct: React.FC = () => {
 
       <main className="container mx-auto mt-8 p-4 flex-grow">
         <div className="flex flex-col md:flex-row items-start">
-          <div className="md:w-1/4 p-4 border rounded bg-gray-100 mr-4">
-            <h3 className="font-bold mb-2 text-red-600">Nearby Items</h3> {/* Nearby items text in red */}
+          <div className="md:w-1/4 p-4 border rounded bg-gray-100 mb-4 md:mb-0">
+            <h3 className="font-bold mb-2 text-red-600">Nearby Items</h3> 
             <ul className="list-disc list-inside text-gray-700">
               <li>Google Nest Mini</li>
               <li>Apple HomePod mini</li>
@@ -82,36 +82,36 @@ const FindProduct: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="md:w-1/4 md:pl-4 mt-6 md:mt-0 text-center md:text-left">
-            <h2 className="text-3xl font-bold mb-2 text-black">Amazon Alexa</h2> {/* Title changed to Amazon Alexa in black text */}
-            <p className="text-sm text-gray-500 mb-4">{weight}</p>
-            <div className="flex justify-center md:justify-start items-center mb-4">
-              <span className="text-3xl font-bold text-black">₹{pricePerUnit.toLocaleString()}</span> {/* Price in black text */}
-              <span className="ml-2 text-sm text-gray-500">Price when purchased online</span>
+          <div className="md:w-1/4 md:pl-4 mt-6 md:mt-0">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-black text-center md:text-left">Amazon Alexa</h2>
+            <p className="text-sm text-gray-500 mb-4 text-center md:text-left">{weight}</p>
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-start mb-4 space-y-2 md:space-y-0 md:space-x-4">
+              <span className="text-2xl md:text-3xl font-bold text-black">₹{pricePerUnit.toLocaleString()}</span>
+              <span className="text-xs md:text-sm text-gray-500">Price when purchased online</span>
             </div>
-            <div className="flex items-center mb-4">
-              <label htmlFor="quantity" className="mr-2 text-black">Quantity:</label> {/* Quantity label in black text */}
+            <div className="flex flex-col items-center md:items-start mb-4">
+              <label htmlFor="quantity" className="text-black mb-2">Quantity:</label>
               <input 
                 type="number" 
                 id="quantity" 
                 value={quantity} 
                 onChange={handleQuantityChange} 
                 min="1" 
-                className="border rounded p-2 w-16 text-center text-black"
+                className="border rounded p-2 w-24 text-center text-black"
               />
             </div>
             <button 
               onClick={handleAddToCart} 
-              className="bg-blue-600 text-white px-6 py-2 rounded-full mb-4"
+              className="bg-blue-600 text-white px-6 py-2 rounded-full mb-4 w-full md:w-auto"
             >
               Add to cart
             </button>
             <div className="border-t border-gray-200 pt-4">
-              <h3 className="font-bold mb-2 text-black">How do you want your item?</h3> {/* How do you want your item? in black text */}
-              <div className="flex justify-center md:justify-start space-x-4">
+              <h3 className="font-bold mb-2 text-black text-center md:text-left">How do you want your item?</h3>
+              <div className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
                 <div className="border rounded p-4 text-center">
                   <p className="font-bold text-gray-400">Shipping</p>
-                  <p className="text-sm text-gray-400">Arrives Sep 6</p> {/* Shipping Arrives Sep 6 in grey */}
+                  <p className="text-sm text-gray-400">Arrives Sep 6</p>
                   <p className="text-sm text-gray-400">Free</p>
                 </div>
                 <div className="border rounded p-4 text-center text-gray-400">
@@ -128,16 +128,16 @@ const FindProduct: React.FC = () => {
         </div>
 
         <div className="mt-8 border border-gray-200 p-4 rounded-lg">
-          <h3 className="text-xl font-bold mb-2 text-black">Product Description</h3> {/* Product Description in black text */}
+          <h3 className="text-xl font-bold mb-2 text-black text-center md:text-left">Product Description</h3>
           <p className="text-gray-700">
             Amazon Echo Dot (5th Gen) is a smart speaker with improved sound quality, motion detection, temperature sensor, and built-in Alexa. It is perfect for controlling your smart home devices, streaming music, and getting updates on the weather and news.
           </p>
         </div>
 
         <div className="mt-8">
-          <h3 className="text-xl font-bold mb-2 text-black">Customer Reviews</h3> {/* Customer Reviews in black text */}
-          <p className="text-gray-700">★★★★☆ (4.5/5 based on 500 reviews)</p>
-          <p className="text-gray-700">Fantastic sound quality and super convenient for a smart home!</p>
+          <h3 className="text-xl font-bold mb-2 text-black text-center md:text-left">Customer Reviews</h3>
+          <p className="text-gray-700 text-center md:text-left">★★★★☆ (4.5/5 based on 500 reviews)</p>
+          <p className="text-gray-700 text-center md:text-left">Fantastic sound quality and super convenient for a smart home!</p>
         </div>
       </main>
     </div>
