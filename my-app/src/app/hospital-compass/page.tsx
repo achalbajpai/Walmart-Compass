@@ -76,8 +76,8 @@ const HospitalHome: React.FC = () => {
     router.push('/');
   };
 
-  const handleNavigateToAirportCompass = () => {
-    router.push('/airport-compass');
+  const handleNavigateToStadiumCompass = () => {
+    router.push('/stadium-compass');
   };
 
   const handleNavigateToWMart = () => {
@@ -237,12 +237,12 @@ const HospitalHome: React.FC = () => {
           </motion.button>
 
           <motion.button
-            onClick={handleNavigateToAirportCompass}
+            onClick={handleNavigateToStadiumCompass}
             className="py-2 px-4 rounded bg-green-600 text-white font-semibold hover:bg-green-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Airport Compass
+            Stadium Compass
           </motion.button>
         </div>
         <div className="container mx-auto mt-4 flex justify-center">

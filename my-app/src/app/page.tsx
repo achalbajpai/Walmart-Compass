@@ -54,21 +54,12 @@ const HomePage: React.FC = () => {
           </motion.button>
 
           <motion.button
-            onClick={() => router.push("/airport-compass")}
+            onClick={() => router.push("/stadium-compass")}
             className="py-3 px-8 rounded-full text-lg font-semibold bg-purple-600 text-white hover:bg-purple-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="hover:underline">Airport Compass</span>
-          </motion.button>
-
-          <motion.button
-            onClick={() => router.push("/compass4")}
-            className="py-3 px-8 rounded-full text-lg font-semibold bg-red-600 text-white hover:bg-red-700 transition shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="hover:underline">Compass 4</span>
+            <span className="hover:underline">Stadium Compass</span>
           </motion.button>
         </div>
       </main>

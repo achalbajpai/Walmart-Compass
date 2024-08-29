@@ -14,6 +14,7 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const allProductOptions = [
+    "Amazon Alexa",
     "Maggi",
     "Yippee",
     "Hakka Noodles",
@@ -61,11 +62,8 @@ const Home: React.FC = () => {
   };
 
   const handleScan = async () => {
-    if (selectedImages.length > 0) {
-      const productCategory = "noodles";
-      router.push(`/search?category=${productCategory}`);
-    } else if (productName) {
-      router.push(`/search?product=${encodeURIComponent(productName)}`);
+    if (selectedImages.length > 0 || productName) {
+      router.push(`/find-product?product=${encodeURIComponent(productName)}`);
     }
   };
 
@@ -229,12 +227,12 @@ const Home: React.FC = () => {
             </motion.button>
 
             <motion.button
-              onClick={() => router.push('/airport-compass')}
+              onClick={() => router.push('/stadium-compass')}
               className="py-2 px-4 rounded bg-purple-600 text-white font-semibold hover:bg-purple-700 transition shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Airport Compass
+              Stadium Compass
             </motion.button>
 
             <motion.button
@@ -249,11 +247,11 @@ const Home: React.FC = () => {
 
           <motion.button
             onClick={() => router.push('/')}
-            className="py-2 px-6 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg"
+            className="py-2 px-4 rounded bg-gray-800 text-white font-semibold hover:bg-gray-900 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Go to Home Page
+            Back to Home
           </motion.button>
         </div>
       </footer>

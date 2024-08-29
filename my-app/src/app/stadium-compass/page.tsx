@@ -6,32 +6,32 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
-const AirportHome: React.FC = () => {
+const StadiumHome: React.FC = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [flightNumber, setFlightNumber] = useState<string>("");
-  const [flightSuggestions, setFlightSuggestions] = useState<string[]>([]);
+  const [seatNumber, setSeatNumber] = useState<string>("");
+  const [seatSuggestions, setSeatSuggestions] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
-  const allFlightOptions = [
-    "Flight 101",
-    "Flight 102",
-    "Flight 103",
-    "Flight 104",
-    "Flight 105",
-    "Flight 106",
-    "Flight 107",
-    "Flight 108",
-    "Flight 109",
-    "Flight 110",
+  const allSeatOptions = [
+    "Block A1 - Seat 1",
+    "Block A1 - Seat 2",
+    "Block A2 - Seat 1",
+    "Block A2 - Seat 2",
+    "Block B1 - Seat 1",
+    "Block B1 - Seat 2",
+    "Block B2 - Seat 1",
+    "Block B2 - Seat 2",
+    "Block C1 - Seat 1",
+    "Block C1 - Seat 2",
   ];
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files) {
       setSelectedFiles([...selectedFiles, ...Array.from(files)]);
-      setFlightNumber("");
-      setFlightSuggestions([]);
+      setSeatNumber("");
+      setSeatSuggestions([]);
     }
   };
 
@@ -40,31 +40,31 @@ const AirportHome: React.FC = () => {
     setSelectedFiles(updatedFiles);
   };
 
-  const handleFlightNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSeatNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    setFlightNumber(inputValue);
+    setSeatNumber(inputValue);
 
     if (inputValue) {
-      const filteredSuggestions = allFlightOptions.filter(option =>
+      const filteredSuggestions = allSeatOptions.filter(option =>
         option.toLowerCase().includes(inputValue.toLowerCase())
       );
-      setFlightSuggestions(filteredSuggestions);
+      setSeatSuggestions(filteredSuggestions);
     } else {
-      setFlightSuggestions([]);
+      setSeatSuggestions([]);
     }
   };
 
   const handleSuggestionClick = (suggestion: string) => {
-    setFlightNumber(suggestion);
-    setFlightSuggestions([]);
+    setSeatNumber(suggestion);
+    setSeatSuggestions([]);
     setSelectedFiles([]);
   };
 
-  const handleFindGate = async () => {
+  const handleFindSeat = async () => {
     if (selectedFiles.length > 0) {
       router.push(`/search?documents`);
-    } else if (flightNumber) {
-      router.push(`/search?flight=${encodeURIComponent(flightNumber)}`);
+    } else if (seatNumber) {
+      router.push(`/search?seat=${encodeURIComponent(seatNumber)}`);
     }
   };
 
@@ -87,8 +87,8 @@ const AirportHome: React.FC = () => {
   return (
     <div className="bg-gradient-to-b from-gray-100 to-white text-gray-900 font-sans min-h-screen relative">
       <Head>
-        <title>Airport Compass</title>
-        <meta name="description" content="Upload your boarding pass or enter your flight number to find your gate at the airport" />
+        <title>Stadium Compass</title>
+        <meta name="description" content="Upload your ticket or enter your seat number to find your seat in the stadium" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -100,7 +100,7 @@ const AirportHome: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Airport Compass
+            Stadium Compass
           </motion.h1>
           <motion.button
             onClick={handleEmergency}
@@ -120,9 +120,9 @@ const AirportHome: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-6"
         >
-          <h2 className="text-2xl font-bold mb-2">Upload Boarding Pass or Enter Your Flight Number</h2>
+          <h2 className="text-2xl font-bold mb-2">Upload Ticket or Enter Your Seat Number</h2>
           <p className="text-lg mb-4 max-w-md">
-            Our system will help you find the gate number for your flight.
+            Our system will help you find your seat in the stadium.
           </p>
         </motion.div>
 
@@ -133,8 +133,8 @@ const AirportHome: React.FC = () => {
           transition={{ duration: 0.5 }}
         >
           <Image
-            src="/airport.jpg"
-            alt="Instructions on how to find your gate"
+            src="/stadium.jpeg"
+            alt="Instructions on how to find your seat"
             width={450}
             height={70}
             className="rounded-lg"
@@ -151,7 +151,7 @@ const AirportHome: React.FC = () => {
             htmlFor="file-upload"
             className="mb-3 cursor-pointer w-full text-center p-3 rounded-full bg-white text-gray-900 shadow-md hover:bg-gray-100 transition"
           >
-            Upload Boarding Pass
+            Upload Ticket
           </label>
           <input
             id="file-upload"
@@ -166,14 +166,14 @@ const AirportHome: React.FC = () => {
           <div className="relative w-full mb-3">
             <input
               type="text"
-              placeholder="Enter Flight Number"
-              value={flightNumber}
-              onChange={handleFlightNumberChange}
+              placeholder="Enter Seat Number"
+              value={seatNumber}
+              onChange={handleSeatNumberChange}
               className="w-full p-3 rounded-full bg-white text-gray-900 shadow-md focus:ring-2 focus:ring-gray-300 outline-none transition"
             />
-            {flightSuggestions.length > 0 && (
+            {seatSuggestions.length > 0 && (
               <ul className="absolute z-10 w-full bg-white text-black shadow-lg border rounded-lg mt-1 max-h-60 overflow-y-auto">
-                {flightSuggestions.map((suggestion) => (
+                {seatSuggestions.map((suggestion) => (
                   <li
                     key={suggestion}
                     onClick={() => handleSuggestionClick(suggestion)}
@@ -214,13 +214,13 @@ const AirportHome: React.FC = () => {
           )}
 
           <motion.button
-            onClick={handleFindGate}
+            onClick={handleFindSeat}
             className="py-3 px-6 rounded-full text-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition shadow-lg"
-            disabled={selectedFiles.length === 0 && !flightNumber}
+            disabled={selectedFiles.length === 0 && !seatNumber}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Find Gate
+            Find Seat
           </motion.button>
         </motion.div>
       </main>
@@ -247,11 +247,11 @@ const AirportHome: React.FC = () => {
         <div className="container mx-auto mt-4 flex justify-center">
           <motion.button
             onClick={handleNavigateHome}
-            className="py-2 px-6 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold hover:from-teal-600 hover:to-cyan-600 transition shadow-lg"
+            className="py-2 px-6 rounded-full text-lg font-semibold bg-gray-600 text-white hover:bg-gray-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Go to Home Page
+            Home
           </motion.button>
         </div>
       </footer>
@@ -259,4 +259,4 @@ const AirportHome: React.FC = () => {
   );
 };
 
-export default AirportHome;
+export default StadiumHome;
