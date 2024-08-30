@@ -116,7 +116,7 @@ const Home: React.FC = () => {
         </motion.div>
 
         <motion.div 
-          className="mb-4 rounded-lg overflow-hidden shadow-xl"
+          className="mb-4 rounded-lg overflow-hidden shadow-xl relative flex items-start justify-center"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -128,6 +128,11 @@ const Home: React.FC = () => {
             height={70}
             className="rounded-lg"
           />
+          <div className="absolute right-0 top-0 left-0 p-4 bg-white bg-opacity-80 border-2 border-red-600 rounded-lg shadow-md text-center">
+            <p className="text-red-600 font-bold text-lg">ALERT!</p>
+            <p className="text-red-600">Number of customers shopping: 82</p>
+            <p className="text-red-600">EST: 32 mins</p>
+          </div>
         </motion.div>
 
         <motion.div 
@@ -228,7 +233,7 @@ const Home: React.FC = () => {
 
             <motion.button
               onClick={() => router.push('/stadium-compass')}
-              className="py-2 px-4 rounded bg-purple-600 text-white font-semibold hover:bg-purple-700 transition shadow-lg"
+              className="py-2 px-4 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -238,7 +243,7 @@ const Home: React.FC = () => {
 
           <motion.button
             onClick={() => router.push('/')}
-            className="py-2 px-4 rounded bg-gray-800 text-white font-semibold hover:bg-gray-900 transition shadow-lg"
+            className="py-2 px-4 rounded bg-gray-600 text-white font-semibold hover:bg-gray-700 transition shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
