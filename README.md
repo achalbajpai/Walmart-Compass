@@ -1,87 +1,79 @@
+# Compass AI
 
----
+Compass AI is an innovative AI-powered travel planning assistant that helps users create personalized travel itineraries based on their preferences and constraints.
 
-# Walmart Compass
+## Live Demo
 
-Walmart Compass is a Next.js web application that allows users to find products on Walmart by either uploading an image or entering a product name. It features a dark mode/light mode toggle and a product suggestion dropdown.
+Check out the live demo of Compass AI: [https://compassv1.vercel.app/](https://compassv1.vercel.app/)
 
 ## Features
 
-- **Image Upload:** Users can upload an image to search for products.
-- **Product Name Search:** Enter a product name to get suggestions from a predefined list.
-- **Dark Mode/Light Mode Toggle:** Switch between dark and light themes.
-- **Product Suggestions:** Get product suggestions as you type.
+- AI-powered travel itinerary generation
+- Personalized recommendations based on user preferences
+- Interactive map visualization of travel plans
+- Responsive design for desktop and mobile devices
+- Integration with OpenAI's GPT model for natural language processing
 
-## Technologies Used
+## Tech Stack
 
-- Next.js
-- TypeScript
+- Next.js 13 (App Router)
 - React
+- TypeScript
 - Tailwind CSS
+- Vercel AI SDK
+- OpenAI GPT
+- Mapbox GL JS
+- Vercel (for deployment)
 
 ## Getting Started
 
-To run the project locally, follow these steps:
+To run this project locally, follow these steps:
 
-### Prerequisites
-
-Make sure you have the following installed:
-- [Node.js](https://nodejs.org/) (v14 or later)
-- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) (npm comes with Node.js)
-
-### Installation
-
-1. **Clone the Repository**
-
-   ```bash
-   git clone https://github.com/your-username/walmart-compass.git
-   cd walmart-compass
+1. Clone the repository:
+   ```
+   git clone https://github.com/achalbajpai/Compass-AI.git
+   cd Compass-AI
    ```
 
-2. **Install Dependencies**
-
-   ```bash
+2. Install dependencies:
+   ```
    npm install
-   # or
-   yarn install
    ```
 
-3. **Run the Development Server**
+3. Create a `.env.local` file in the root directory and add the following environment variables:
+   ```
+   OPENAI_API_KEY=your_openai_api_key
+   NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
+   ```
 
-   ```bash
+4. Run the development server:
+   ```
    npm run dev
-   # or
-   yarn dev
    ```
 
-   Open your browser and navigate to `http://localhost:3000` to see the application.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Configuration
+## Project Structure
 
-- **Images:** Ensure you have the following images in the `public` folder:
-  - `walmart.png` (for the Walmart logo in the header)
-  - `instructions.jpeg` (for the instructional image on how to scan an image)
-
-- **Dark Mode:** The dark mode is toggled using a button in the header.
-
-## File Structure
-
-- `pages.tsx`: Main component file for the homepage.
-- `public/`: Folder for static assets such as images.
-- `styles/`: Contains any global styles or Tailwind CSS configuration.
+- `app/`: Contains the main application pages and layouts
+- `components/`: Reusable React components
+- `lib/`: Utility functions and API handlers
+- `public/`: Static assets
 
 ## Contributing
 
-Feel free to fork the repository and make a pull request. If you find any bugs or have feature requests, please open an issue.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is open source and available under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- [OpenAI](https://openai.com/) for providing the GPT model
+- [Mapbox](https://www.mapbox.com/) for the map visualization
+- [Vercel](https://vercel.com/) for hosting and deployment
 
 ## Contact
 
-For any questions or inquiries
-
----
-
-Feel free to adjust any details as needed!
+For any questions or feedback, please reach out to [Achal Bajpai](mailto:achalbajpai2004@gmail.com).
