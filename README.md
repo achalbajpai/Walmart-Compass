@@ -1,18 +1,10 @@
-# Compass AI
+# Compass-AI
 
-Compass AI is an innovative AI-powered travel planning assistant that helps users create personalized travel itineraries based on their preferences and constraints.
+Compass-AI is an innovative project that aims to combine artificial intelligence with geospatial data to provide intelligent navigation and location-based services. This project is currently in its early stages of development.
 
-## Live Demo
+## Current Features
 
-Check out the live demo of Compass AI: [https://compassv1.vercel.app/](https://compassv1.vercel.app/)
-
-## Features
-
-- AI-powered travel itinerary generation
-- Personalized recommendations based on user preferences
-- Interactive map visualization of travel plans
-- Responsive design for desktop and mobile devices
-- Integration with OpenAI's GPT model for natural language processing
+- Basic project structure
 
 ## Tech Stack
 
@@ -21,59 +13,86 @@ Check out the live demo of Compass AI: [https://compassv1.vercel.app/](https://c
 - TypeScript
 - Tailwind CSS
 - Vercel AI SDK
-- OpenAI GPT
-- Mapbox GL JS
 - Vercel (for deployment)
+  
+## Planned Features
 
-## Getting Started
+- Integration with OpenAI's GPT model for natural language processing
+- AI-powered route optimization
+- Real-time traffic analysis and prediction
+- Points of interest recommendation based on user preferences
+- Voice-activated navigation commands
+- Integration with various mapping services
 
-To run this project locally, follow these steps:
+## Installation
+
+To set up Compass-AI locally, follow these steps:
 
 1. Clone the repository:
    ```
    git clone https://github.com/achalbajpai/Compass-AI.git
+   ```
+
+2. Navigate to the project directory:
+   ```
    cd Compass-AI
    ```
 
-2. Install dependencies:
+3. Install the required dependencies:
    ```
-   npm install
-   ```
-
-3. Create a `.env.local` file in the root directory and add the following environment variables:
-   ```
-   OPENAI_API_KEY=your_openai_api_key
-   NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
+   pip install -r requirements.txt
    ```
 
-4. Run the development server:
-   ```
-   npm run dev
-   ```
+## Configuration
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+As the project is in its early stages, specific configuration steps will be added as features are implemented.
 
-## Project Structure
+## Usage
 
-- `app/`: Contains the main application pages and layouts
-- `components/`: Reusable React components
-- `lib/`: Utility functions and API handlers
-- `public/`: Static assets
+As the project is in its early stages, usage instructions will be updated as features are implemented.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions to Compass-AI! If you'd like to contribute, please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature-name`)
+3. Make your changes
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin feature/your-feature-name`)
+6. Create a new Pull Request
+
+Please make sure to update tests as appropriate and adhere to the project's coding standards.
+
+## Contributors
+
+<a href="https://github.com/achalbajpai">
+  <img src="https://github.com/achalbajpai.png" width="50" height="50" alt="achalbajpai">
+</a>
+<a href="https://github.com/thakare-om03">
+  <img src="https://github.com/thakare-om03.png" width="50" height="50" alt="thakare-om03">
+</a>
+
+## Things to Add
+
+- Implement core AI navigation algorithms
+- Develop user interface for route planning
+- Integrate with mapping services API
+- Create data processing pipeline for real-time traffic information
+- Implement voice recognition for navigation commands
+- Develop mobile application version
+- Integrate with OpenAI's GPT model for natural language processing
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- [OpenAI](https://openai.com/) for providing the GPT model
-- [Mapbox](https://www.mapbox.com/) for the map visualization
-- [Vercel](https://vercel.com/) for hosting and deployment
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-For any questions or feedback, please reach out to [Achal Bajpai](mailto:achalbajpai2004@gmail.com).
+For any queries or suggestions, please contact the project maintainer:
+
+[Achal Bajpai](https://github.com/achalbajpai)
+
+[Om Thakare](https://github.com/thakare-om03)
+
+Project Link: [Click here](https://compassv1.vercel.app/))
