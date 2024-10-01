@@ -39,7 +39,7 @@ const FindProduct: React.FC = () => {
             <input 
               type="text" 
               placeholder="Search for products..." 
-              className="border rounded p-2 w-full md:w-auto"
+              className="border rounded p-2 w-full md:w-auto text-black"
             />
             <button onClick={handleBackToSearch} className="bg-white text-blue-600 px-4 py-2 rounded">
               Back
