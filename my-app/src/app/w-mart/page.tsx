@@ -81,6 +81,7 @@ const Home: React.FC = () => {
 
       <header className="p-3 bg-blue-700 bg-opacity-90 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
+          
             <motion.h1 
               className="text-2xl font-bold text-yellow-300"
               initial={{ opacity: 0, y: -20 }}
@@ -89,7 +90,6 @@ const Home: React.FC = () => {
             >
               w-Mart Compass
             </motion.h1>
-          </a>
           <motion.button
             onClick={handleQuickShopping}
             className="py-2 px-4 rounded bg-blue-800 text-white font-semibold hover:bg-blue-900 transition shadow-lg ml-4 md:ml-8"
