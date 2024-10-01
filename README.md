@@ -95,4 +95,4 @@ For any queries or suggestions, please contact the project maintainer:
 
 [Om Thakare](https://github.com/thakare-om03)
 
-Project Link: [Click here](https://compassv1.vercel.app/))
+Project Link: [Click here](https://compassv1.vercel.app/)
