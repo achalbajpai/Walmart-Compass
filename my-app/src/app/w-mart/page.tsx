@@ -81,7 +81,6 @@ const Home: React.FC = () => {
 
       <header className="p-3 bg-blue-700 bg-opacity-90 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center">
-          <a href="https://www.walmart.com/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
             <motion.h1 
               className="text-2xl font-bold text-yellow-300"
               initial={{ opacity: 0, y: -20 }}
