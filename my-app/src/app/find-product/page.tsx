@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -13,10 +14,6 @@ const FindProduct: React.FC = () => {
   const [cartCount, setCartCount] = useState<number>(0);
   const [isMagnified, setIsMagnified] = useState<boolean>(false);
 
-  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(Number(e.target.value));
-  };
-
   const handleAddToCart = () => {
     setCartCount(cartCount + quantity);
     alert(`${quantity} ${productName}(s) added to cart!`);
@@ -28,6 +25,16 @@ const FindProduct: React.FC = () => {
 
   const toggleMagnify = () => {
     setIsMagnified(!isMagnified);
+  };
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
   };
 
   return (
@@ -53,7 +60,7 @@ const FindProduct: React.FC = () => {
 
       <main className="container mx-auto mt-8 p-4 flex-grow">
         <div className="flex flex-col md:flex-row items-start">
-          <div className="md:w-1/4 p-4 border rounded bg-gray-100 mb-4 md:mb-0 md:mr-4"> {/* Added md:mr-4 */}
+          <div className="md:w-1/4 p-4 border rounded bg-gray-100 mb-4 md:mb-0 md:mr-4">
             <h3 className="font-bold mb-2 text-red-600">Nearby Items</h3> 
             <ul className="list-disc list-inside text-gray-700">
               <li>Google Nest Mini</li>
@@ -91,14 +98,27 @@ const FindProduct: React.FC = () => {
             </div>
             <div className="flex flex-col items-center md:items-start mb-4">
               <label htmlFor="quantity" className="text-black mb-2">Quantity:</label>
-              <input 
-                type="number" 
-                id="quantity" 
-                value={quantity} 
-                onChange={handleQuantityChange} 
-                min="1" 
-                className="border rounded p-2 w-24 text-center text-black"
-              />
+              <div className="flex items-center border rounded w-32">
+                <button 
+                  onClick={decrementQuantity} 
+                  className="bg-gray-200 text-black p-2 rounded-l"
+                >
+                  -
+                </button>
+                <input 
+                  type="text" 
+                  id="quantity" 
+                  value={quantity} 
+                  readOnly
+                  className="w-full text-center p-2 border-l border-r text-black"
+                />
+                <button 
+                  onClick={incrementQuantity} 
+                  className="bg-gray-200 text-black p-2 rounded-r"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <button 
               onClick={handleAddToCart} 
