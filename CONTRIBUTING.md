@@ -3,6 +3,8 @@
 
 Welcome to the **Hacktoberfest 2024** celebration! 🎉 Thank you for showing interest in contributing to this project. Whether you're a beginner or an experienced developer, you're welcome to collaborate and help make this project better. Below are some guidelines to help you get started.
 
+## Step 1 - Star the repository to get your PR merged 
+
 ## Getting Started
 
 1. **Fork the repository**: Click the "Fork" button at the top right of this repository to get your own copy.
