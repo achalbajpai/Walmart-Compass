@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const FindProduct: React.FC = () => {
   const router = useRouter();
@@ -51,9 +52,13 @@ const FindProduct: React.FC = () => {
             <button onClick={handleBackToSearch} className="bg-white text-blue-600 px-4 py-2 rounded">
               Back
             </button>
+            <Link href="/cart">
             <button className="bg-white text-blue-600 px-4 py-2 rounded">
               Your Cart ({cartCount})
             </button>
+            </Link>
+        
+      
           </div>
         </div>
       </header>
